@@ -255,7 +255,7 @@ class AlignedBuilder
             
             $result = self::MULTILINE_BEGIN.PHP_EOL;
             foreach ($parts as $line) {
-                $result .= self::makeLine(addslashes($line), '', 110, $padding);
+                $result .= '"'.self::makeLine(addslashes($line), null, 110, $padding).'"';
             }
             $result .= str_repeat(' ', $padding).self::MULTILINE_END;
 
