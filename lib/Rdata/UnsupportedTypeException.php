@@ -13,7 +13,7 @@ namespace Badcow\DNS\Rdata;
 
 class UnsupportedTypeException extends \Exception
 {
-    public function __construct(string $type)
+    public function __construct($type)
     {
         parent::__construct(sprintf('Rdata "%s" is not implemented.', $type));
     }

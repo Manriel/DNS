@@ -25,7 +25,7 @@ class ParseException extends \Exception
      * @param StringIterator|null $stringIterator
      * @param \Throwable|null     $previous
      */
-    public function __construct(string $message = '', StringIterator $stringIterator = null, \Throwable $previous = null)
+    public function __construct($message = '', StringIterator $stringIterator = null, \Throwable $previous = null)
     {
         if (null !== $stringIterator) {
             $this->stringIterator = $stringIterator;
@@ -40,7 +40,7 @@ class ParseException extends \Exception
      *
      * @return int
      */
-    private function getLineNumber(): int
+    private function getLineNumber()
     {
         $pos = $this->stringIterator->key();
         $this->stringIterator->rewind();

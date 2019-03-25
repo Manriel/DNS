@@ -24,7 +24,7 @@ class ZoneBuilder
      *
      * @return string
      */
-    public static function build(Zone $zone): string
+    public static function build(Zone $zone)
     {
         $master = '$ORIGIN '.$zone->getName().PHP_EOL;
         if (null !== $zone->getDefaultTtl()) {
@@ -95,7 +95,7 @@ class ZoneBuilder
      *
      * @return string
      */
-    private static function fullyQualify(string $subdomain, string $parent): string
+    private static function fullyQualify($subdomain, $parent)
     {
         if ('@' === $subdomain) {
             return $parent;

@@ -47,7 +47,7 @@ class ResourceRecord
      * @param string         $class
      * @param string         $comment
      */
-    public function __construct(string $name = null, RdataInterface $rdata = null, int $ttl = null, string $class = null, string $comment = null)
+    public function __construct($name = null, RdataInterface $rdata = null, $ttl = null, $class = null, $comment = null)
     {
         $this->name = $name;
         $this->rdata = $rdata;
@@ -65,7 +65,7 @@ class ResourceRecord
      *
      * @throws \UnexpectedValueException
      */
-    public function setClass(?string $class): void
+    public function setClass($class)
     {
         if (null !== $class && !Classes::isValid($class)) {
             throw new \UnexpectedValueException(sprintf('No such class as "%s"', $class));
@@ -80,7 +80,7 @@ class ResourceRecord
      *
      * @param $name
      */
-    public function setName(string $name): void
+    public function setName($name)
     {
         $this->name = $name;
     }
@@ -88,7 +88,7 @@ class ResourceRecord
     /**
      * @param RdataInterface $rdata
      */
-    public function setRdata(RdataInterface $rdata): void
+    public function setRdata(RdataInterface $rdata)
     {
         $this->rdata = $rdata;
     }
@@ -96,7 +96,7 @@ class ResourceRecord
     /**
      * @return string
      */
-    public function getClass(): ?string
+    public function getClass()
     {
         return $this->class;
     }
@@ -106,7 +106,7 @@ class ResourceRecord
      *
      * @param int $ttl
      */
-    public function setTtl(int $ttl): void
+    public function setTtl(int $ttl)
     {
         $this->ttl = $ttl;
     }
@@ -114,7 +114,7 @@ class ResourceRecord
     /**
      * @return string
      */
-    public function getName(): ?string
+    public function getName()
     {
         return $this->name;
     }
@@ -122,7 +122,7 @@ class ResourceRecord
     /**
      * @return string
      */
-    public function getType(): ?string
+    public function getType()
     {
         if (null === $this->rdata) {
             return null;
@@ -134,7 +134,7 @@ class ResourceRecord
     /**
      * @return RdataInterface
      */
-    public function getRdata(): ?RdataInterface
+    public function getRdata()
     {
         return $this->rdata;
     }
@@ -142,7 +142,7 @@ class ResourceRecord
     /**
      * @return int
      */
-    public function getTtl(): ?int
+    public function getTtl()
     {
         return $this->ttl;
     }
@@ -152,7 +152,7 @@ class ResourceRecord
      *
      * @param string $comment
      */
-    public function setComment(string $comment): void
+    public function setComment($comment)
     {
         $this->comment = $comment;
     }
@@ -162,7 +162,7 @@ class ResourceRecord
      *
      * @return string
      */
-    public function getComment(): ?string
+    public function getComment()
     {
         return $this->comment;
     }

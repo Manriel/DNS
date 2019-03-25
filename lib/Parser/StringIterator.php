@@ -18,7 +18,7 @@ class StringIterator extends \ArrayIterator
      *
      * @param string $string
      */
-    public function __construct(string $string = '')
+    public function __construct($string = '')
     {
         parent::__construct(str_split($string));
     }
@@ -28,7 +28,7 @@ class StringIterator extends \ArrayIterator
      *
      * @return bool
      */
-    public function is(string $value): bool
+    public function is($value)
     {
         return $value === $this->current();
     }
@@ -38,7 +38,7 @@ class StringIterator extends \ArrayIterator
      *
      * @return bool
      */
-    public function isNot(string $value): bool
+    public function isNot($value)
     {
         return $value !== $this->current();
     }

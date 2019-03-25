@@ -33,7 +33,7 @@ class HINFO implements RdataInterface
     /**
      * @param $cpu
      */
-    public function setCpu(string $cpu): void
+    public function setCpu($cpu)
     {
         $this->cpu = $cpu;
     }
@@ -41,7 +41,7 @@ class HINFO implements RdataInterface
     /**
      * @return string
      */
-    public function getCpu(): ?string
+    public function getCpu()
     {
         return $this->cpu;
     }
@@ -49,7 +49,7 @@ class HINFO implements RdataInterface
     /**
      * @param string $os
      */
-    public function setOs(string $os): void
+    public function setOs($os)
     {
         $this->os = $os;
     }
@@ -57,7 +57,7 @@ class HINFO implements RdataInterface
     /**
      * @return string
      */
-    public function getOs(): ?string
+    public function getOs()
     {
         return $this->os;
     }
@@ -65,7 +65,7 @@ class HINFO implements RdataInterface
     /**
      * {@inheritdoc}
      */
-    public function output(): string
+    public function output()
     {
         return sprintf('"%s" "%s"', $this->cpu, $this->os);
     }

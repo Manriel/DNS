@@ -28,7 +28,7 @@ class Normaliser
      *
      * @param string $zone
      */
-    public function __construct(string $zone)
+    public function __construct($zone)
     {
         //Remove Windows line feeds and tabs
         $zone = str_replace([Tokens::CARRIAGE_RETURN, Tokens::TAB], ['', Tokens::SPACE], $zone);
@@ -43,7 +43,7 @@ class Normaliser
      *
      * @throws ParseException
      */
-    public static function normalise(string $zone): string
+    public static function normalise($zone)
     {
         return (new self($zone))->process();
     }
@@ -53,7 +53,7 @@ class Normaliser
      *
      * @throws ParseException
      */
-    public function process(): string
+    public function process()
     {
         while ($this->string->valid()) {
             $this->handleTxt();
@@ -70,7 +70,7 @@ class Normaliser
     /**
      * Ignores the comment section.
      */
-    private function handleComment(): void
+    private function handleComment()
     {
         if ($this->string->isNot(Tokens::SEMICOLON)) {
             return;
@@ -87,7 +87,7 @@ class Normaliser
      *
      * @throws ParseException
      */
-    private function handleTxt(): void
+    private function handleTxt()
     {
         if ($this->string->isNot(Tokens::DOUBLE_QUOTES)) {
             return;
@@ -118,7 +118,7 @@ class Normaliser
      *
      * @throws ParseException
      */
-    private function handleMultiline(): void
+    private function handleMultiline()
     {
         if ($this->string->isNot(Tokens::OPEN_BRACKET)) {
             return;
@@ -149,7 +149,7 @@ class Normaliser
     /**
      * Remove superfluous whitespace characters from string.
      */
-    private function removeWhitespace(): void
+    private function removeWhitespace()
     {
         $string = preg_replace('/ {2,}/', Tokens::SPACE, $this->normalisedString);
         $lines = [];

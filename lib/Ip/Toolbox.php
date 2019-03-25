@@ -26,7 +26,7 @@ class Toolbox
      *
      * @return string
      */
-    public static function expandIpv6(string $ip): string
+    public static function expandIpv6($ip)
     {
         if (!Validator::ipv6($ip)) {
             throw new \InvalidArgumentException(sprintf('"%s" is not a valid IPv6 address.', $ip));
@@ -46,7 +46,7 @@ class Toolbox
      *
      * @return string Expanded incomplete IPv6 address
      */
-    public static function expandIncompleteIpv6(string $ip): string
+    public static function expandIncompleteIpv6($ip)
     {
         $hextets = array_map(function ($hextet) {
             return str_pad($hextet, 4, '0', STR_PAD_LEFT);
@@ -73,7 +73,7 @@ class Toolbox
      *
      * @return string Contracted IPv6 address
      */
-    public static function contractIpv6(string $ip): string
+    public static function contractIpv6($ip)
     {
         if (!Validator::ipv6($ip)) {
             throw new \InvalidArgumentException(sprintf('"%s" is not a valid IPv6 address.', $ip));
@@ -91,7 +91,7 @@ class Toolbox
      *
      * @return string Reversed IP address appended with ".in-addr.arpa."
      */
-    public static function reverseIpv4(string $ip): string
+    public static function reverseIpv4($ip)
     {
         $octets = array_reverse(explode('.', $ip));
 
@@ -108,7 +108,7 @@ class Toolbox
      *
      * @return string The reversed address appended with ".ip6.arpa."
      */
-    public static function reverseIpv6(string $ip, bool $appendSuffix = true): string
+    public static function reverseIpv6($ip, $appendSuffix = true)
     {
         try {
             $ip = self::expandIpv6($ip);

@@ -27,7 +27,7 @@ class Factory
      *
      * @return RdataInterface
      */
-    public static function newRdataFromName(string $name): RdataInterface
+    public static function newRdataFromName($name)
     {
         if (!self::isTypeImplemented($name)) {
             throw new UnsupportedTypeException($name);
@@ -48,7 +48,7 @@ class Factory
      *
      * @return bool
      */
-    public static function isTypeImplemented(string $name): bool
+    public static function isTypeImplemented($name)
     {
         $namespace = '\\Badcow\\DNS\\Rdata\\';
         $name = strtoupper($name);
@@ -256,7 +256,7 @@ class Factory
      *
      * @return DS
      */
-    public static function Ds(int $keyTag, int $algorithm, string $digest, int $digestType = DS::DIGEST_SHA1)
+    public static function Ds($keyTag, $algorithm, $digest, $digestType = DS::DIGEST_SHA1)
     {
         $rdata = new DS();
         $rdata->setKeyTag($keyTag);
@@ -273,7 +273,7 @@ class Factory
      *
      * @return NSEC
      */
-    public static function Nsec(string $nextDomainName, array $typeBitMaps)
+    public static function Nsec($nextDomainName, array $typeBitMaps)
     {
         $rdata = new NSEC();
         $rdata->setNextDomainName($nextDomainName);
@@ -321,7 +321,7 @@ class Factory
      *
      * @return SRV
      */
-    public static function Srv(int $priority, int $weight, int $port, string $target)
+    public static function Srv($priority, $weight, $port, $target)
     {
         $rdata = new SRV();
         $rdata->setPriority($priority);
@@ -338,7 +338,7 @@ class Factory
      *
      * @return APL
      */
-    public static function Apl(array $includedRanges = [], array $excludedRanges = []): APL
+    public static function Apl(array $includedRanges = [], array $excludedRanges = [])
     {
         $rdata = new APL();
 
@@ -360,7 +360,7 @@ class Factory
      *
      * @return CAA
      */
-    public static function Caa(int $flag, string $tag, string $value): CAA
+    public static function Caa($flag, $tag, $value)
     {
         $rdata = new CAA();
         $rdata->setFlag($flag);

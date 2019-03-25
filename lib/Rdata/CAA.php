@@ -62,7 +62,7 @@ class CAA implements RdataInterface
     /**
      * @return int
      */
-    public function getFlag(): ?int
+    public function getFlag()
     {
         return $this->flag;
     }
@@ -72,7 +72,7 @@ class CAA implements RdataInterface
      *
      * @throws \InvalidArgumentException
      */
-    public function setFlag(int $flag): void
+    public function setFlag($flag)
     {
         if ($flag < 0 || $flag > static::MAX_FLAG) {
             throw new \InvalidArgumentException('Flag must be an unsigned integer on the range [0-255]');
@@ -84,7 +84,7 @@ class CAA implements RdataInterface
     /**
      * @return string
      */
-    public function getTag(): ?string
+    public function getTag()
     {
         return $this->tag;
     }
@@ -94,7 +94,7 @@ class CAA implements RdataInterface
      *
      * @throws \InvalidArgumentException
      */
-    public function setTag(string $tag): void
+    public function setTag($tag)
     {
         if (!in_array($tag, static::ALLOWED_TAGS)) {
             throw new \InvalidArgumentException('Tag can be one of this type '.implode(' ', static::ALLOWED_TAGS));
@@ -106,7 +106,7 @@ class CAA implements RdataInterface
     /**
      * @return string
      */
-    public function getValue(): string
+    public function getValue()
     {
         return $this->value;
     }
@@ -114,7 +114,7 @@ class CAA implements RdataInterface
     /**
      * @param string $value
      */
-    public function setValue(string $value): void
+    public function setValue($value)
     {
         $this->value = $value;
     }
@@ -122,7 +122,7 @@ class CAA implements RdataInterface
     /**
      * {@inheritdoc}
      */
-    public function output(): string
+    public function output()
     {
         return sprintf('%d %s "%s"',
             $this->flag,

@@ -59,7 +59,7 @@ class AlignedBuilder
      *
      * @return string
      */
-    public static function build(Zone $zone): string
+    public static function build(Zone $zone)
     {
         $master = self::generateControlEntries($zone);
         $resourceRecords = $zone->getResourceRecords();
@@ -93,7 +93,7 @@ class AlignedBuilder
         return $master;
     }
 
-    private static function generateControlEntries(Zone $zone): string
+    private static function generateControlEntries(Zone $zone)
     {
         $master = '$ORIGIN '.$zone->getName().PHP_EOL;
         if (null !== $zone->getDefaultTtl()) {
@@ -103,7 +103,7 @@ class AlignedBuilder
         return $master;
     }
 
-    private static function generateComment(ResourceRecord $resourceRecord): string
+    private static function generateComment(ResourceRecord $resourceRecord)
     {
         if (null != $resourceRecord->getComment()) {
             return self::COMMENT_DELIMINATOR.$resourceRecord->getComment();
@@ -120,7 +120,7 @@ class AlignedBuilder
      *
      * @return int
      */
-    public static function compareResourceRecords(ResourceRecord $a, ResourceRecord $b): int
+    public static function compareResourceRecords(ResourceRecord $a, ResourceRecord $b)
     {
         if ($a->getType() === $b->getType()) {
             return strcmp($a->getName().$a->getRdata()->output(), $b->getName().$b->getRdata()->output());
@@ -146,7 +146,7 @@ class AlignedBuilder
      *
      * @return string
      */
-    private static function generateRdataOutput(RdataInterface $rdata, int $padding): string
+    private static function generateRdataOutput(RdataInterface $rdata, $padding)
     {
         if ($rdata instanceof SOA) {
             return self::outputSoa($rdata, $padding);
@@ -169,7 +169,7 @@ class AlignedBuilder
      *
      * @return string
      */
-    private static function outputSoa(SOA $rdata, int $padding): string
+    private static function outputSoa(SOA $rdata, $padding)
     {
         $vars = [
             $rdata->getMname(),
@@ -200,7 +200,7 @@ class AlignedBuilder
      *
      * @return string
      */
-    private static function outputApl(APL $rdata, int $padding): string
+    private static function outputApl(APL $rdata, $padding)
     {
         $blocks = explode(' ', $rdata->output());
         $longestVarLength = max(array_map('strlen', $blocks));
@@ -219,7 +219,7 @@ class AlignedBuilder
      *
      * @return string
      */
-    private static function outputLoc(LOC $rdata, int $padding): string
+    private static function outputLoc(LOC $rdata, $padding)
     {
         $parts = [
             $rdata->getLatitude(LOC::FORMAT_DMS),
@@ -252,7 +252,7 @@ class AlignedBuilder
      *
      * @return string
      */
-    private static function makeLine(string $text, ?string $comment, int $longestVarLength, int $padding): string
+    private static function makeLine($text, $comment, $longestVarLength, $padding)
     {
         $output = str_repeat(' ', $padding).str_pad($text, $longestVarLength);
 

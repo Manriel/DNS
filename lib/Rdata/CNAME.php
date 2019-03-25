@@ -28,7 +28,7 @@ class CNAME implements RdataInterface
     /**
      * @param $target
      */
-    public function setTarget(string $target)
+    public function setTarget($target)
     {
         $this->target = $target;
     }
@@ -36,7 +36,7 @@ class CNAME implements RdataInterface
     /**
      * @return string
      */
-    public function getTarget(): ?string
+    public function getTarget()
     {
         return $this->target;
     }
@@ -44,7 +44,7 @@ class CNAME implements RdataInterface
     /**
      * {@inheritdoc}
      */
-    public function output(): string
+    public function output()
     {
         return $this->target;
     }

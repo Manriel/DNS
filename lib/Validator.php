@@ -36,7 +36,7 @@ class Validator
      *
      * @return bool
      */
-    public static function hostName(string $name): bool
+    public static function hostName($name)
     {
         return self::fullyQualifiedDomainName(rtrim($name, '.').'.');
     }
@@ -48,7 +48,7 @@ class Validator
      *
      * @return bool
      */
-    public static function fullyQualifiedDomainName(string $name): bool
+    public static function fullyQualifiedDomainName($name)
     {
         $isValid = strlen($name) < 254;
         $isValid &= 1 === preg_match('/^(?:(?!-)[a-z0-9\-]{1,63}(?<!-)\.){1,127}$/i', $name);
@@ -64,7 +64,7 @@ class Validator
      *
      * @return bool
      */
-    public static function resourceRecordName(string $name): bool
+    public static function resourceRecordName($name)
     {
         $isValid = strlen($name) < 254;
         $isValid &= 1 === preg_match('/(?:^(?:\*\.)?((?!-)[a-z0-9_\-]{1,63}(?<!-)\.?){1,127}$)|^@$|^\*$/i', $name);
@@ -81,7 +81,7 @@ class Validator
      *
      * @return bool
      */
-    public static function ipv4(string $address): bool
+    public static function ipv4($address)
     {
         return (bool) filter_var($address, FILTER_VALIDATE_IP, [
             'flags' => FILTER_FLAG_IPV4,
@@ -97,7 +97,7 @@ class Validator
      *
      * @return bool
      */
-    public static function ipv6(string $address): bool
+    public static function ipv6($address)
     {
         return (bool) filter_var($address, FILTER_VALIDATE_IP, [
             'flags' => FILTER_FLAG_IPV6,
@@ -113,7 +113,7 @@ class Validator
      *
      * @return bool
      */
-    public static function ipAddress(string $address): bool
+    public static function ipAddress($address)
     {
         return (bool) filter_var($address, FILTER_VALIDATE_IP);
     }
@@ -140,7 +140,7 @@ class Validator
      *
      * @return int
      */
-    public static function zone(Zone $zone): int
+    public static function zone(Zone $zone)
     {
         $n_soa = self::countResourceRecords($zone, SOA::TYPE);
         $n_ns = self::countResourceRecords($zone, NS::TYPE);
@@ -148,7 +148,7 @@ class Validator
 
         $totalError = 0;
 
-        $incrementError = function (bool $errorCondition, int $errorOrdinal) use (&$totalError) {
+        $incrementError = function ($errorCondition, $errorOrdinal) use (&$totalError) {
             $totalError += $errorCondition ? $errorOrdinal : 0;
         };
 
@@ -170,7 +170,7 @@ class Validator
      *
      * @return int the number of records to be counted
      */
-    public static function countResourceRecords(Zone $zone, ?string $type = null): int
+    public static function countResourceRecords(Zone $zone, $type = null)
     {
         $n = 0;
         foreach ($zone as $rr) {
@@ -187,7 +187,7 @@ class Validator
      *
      * @return bool
      */
-    public static function reverseIpv4(string $address): bool
+    public static function reverseIpv4($address)
     {
         $pattern = '/^((?:[0-9]+\.){1,4})in\-addr\.arpa\.$/i';
 
@@ -214,7 +214,7 @@ class Validator
      *
      * @return bool
      */
-    public static function reverseIpv6(string $address): bool
+    public static function reverseIpv6($address)
     {
         $pattern = '/^(?:[0-9a-f]\.){1,32}ip6\.arpa\.$/i';
 
@@ -228,7 +228,7 @@ class Validator
      *
      * @return int
      */
-    private static function countClasses(Zone $zone): int
+    private static function countClasses(Zone $zone)
     {
         $classes = [];
 

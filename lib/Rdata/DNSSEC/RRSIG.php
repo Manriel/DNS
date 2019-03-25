@@ -105,7 +105,7 @@ class RRSIG implements RdataInterface
     /**
      * @return string
      */
-    public function getTypeCovered(): string
+    public function getTypeCovered()
     {
         return $this->typeCovered;
     }
@@ -113,7 +113,7 @@ class RRSIG implements RdataInterface
     /**
      * @param string $typeCovered
      */
-    public function setTypeCovered(string $typeCovered): void
+    public function setTypeCovered($typeCovered)
     {
         $this->typeCovered = $typeCovered;
     }
@@ -121,7 +121,7 @@ class RRSIG implements RdataInterface
     /**
      * @return int
      */
-    public function getAlgorithm(): int
+    public function getAlgorithm()
     {
         return $this->algorithm;
     }
@@ -129,7 +129,7 @@ class RRSIG implements RdataInterface
     /**
      * @param int $algorithm
      */
-    public function setAlgorithm(int $algorithm): void
+    public function setAlgorithm($algorithm)
     {
         $this->algorithm = $algorithm;
     }
@@ -153,7 +153,7 @@ class RRSIG implements RdataInterface
     /**
      * @return int
      */
-    public function getOriginalTtl(): int
+    public function getOriginalTtl()
     {
         return $this->originalTtl;
     }
@@ -161,7 +161,7 @@ class RRSIG implements RdataInterface
     /**
      * @param int $originalTtl
      */
-    public function setOriginalTtl(int $originalTtl): void
+    public function setOriginalTtl($originalTtl)
     {
         $this->originalTtl = $originalTtl;
     }
@@ -169,7 +169,7 @@ class RRSIG implements RdataInterface
     /**
      * @return int
      */
-    public function getSignatureExpiration(): int
+    public function getSignatureExpiration()
     {
         return $this->signatureExpiration;
     }
@@ -177,7 +177,7 @@ class RRSIG implements RdataInterface
     /**
      * @param int $signatureExpiration
      */
-    public function setSignatureExpiration(int $signatureExpiration): void
+    public function setSignatureExpiration($signatureExpiration)
     {
         $this->signatureExpiration = $signatureExpiration;
     }
@@ -185,7 +185,7 @@ class RRSIG implements RdataInterface
     /**
      * @return int
      */
-    public function getSignatureInception(): int
+    public function getSignatureInception()
     {
         return $this->signatureInception;
     }
@@ -193,7 +193,7 @@ class RRSIG implements RdataInterface
     /**
      * @param int $signatureInception
      */
-    public function setSignatureInception(int $signatureInception): void
+    public function setSignatureInception($signatureInception)
     {
         $this->signatureInception = $signatureInception;
     }
@@ -201,7 +201,7 @@ class RRSIG implements RdataInterface
     /**
      * @return int
      */
-    public function getKeyTag(): int
+    public function getKeyTag()
     {
         return $this->keyTag;
     }
@@ -209,7 +209,7 @@ class RRSIG implements RdataInterface
     /**
      * @param int $keyTag
      */
-    public function setKeyTag(int $keyTag): void
+    public function setKeyTag($keyTag)
     {
         $this->keyTag = $keyTag;
     }
@@ -217,7 +217,7 @@ class RRSIG implements RdataInterface
     /**
      * @return string
      */
-    public function getSignersName(): string
+    public function getSignersName()
     {
         return $this->signersName;
     }
@@ -225,7 +225,7 @@ class RRSIG implements RdataInterface
     /**
      * @param string $signersName
      */
-    public function setSignersName(string $signersName): void
+    public function setSignersName($signersName)
     {
         $this->signersName = $signersName;
     }
@@ -233,7 +233,7 @@ class RRSIG implements RdataInterface
     /**
      * @return string
      */
-    public function getSignature(): string
+    public function getSignature()
     {
         return $this->signature;
     }
@@ -241,7 +241,7 @@ class RRSIG implements RdataInterface
     /**
      * @param string $signature
      */
-    public function setSignature(string $signature): void
+    public function setSignature($signature)
     {
         $this->signature = $signature;
     }
@@ -249,7 +249,7 @@ class RRSIG implements RdataInterface
     /**
      * {@inheritdoc}
      */
-    public function output(): string
+    public function output()
     {
         return sprintf(
             '%s %s %s %s %s %s %s %s %s',

@@ -45,7 +45,7 @@ class RdataHandlers
      *
      * @return float
      */
-    public static function dmsToDecimal(int $deg, int $min, float $sec, string $hemisphere): float
+    public static function dmsToDecimal($deg, $min, $sec, $hemisphere)
     {
         $multiplier = ('S' === $hemisphere || 'W' === $hemisphere) ? -1 : 1;
 
@@ -57,7 +57,7 @@ class RdataHandlers
      *
      * @return Rdata\LOC
      */
-    public static function handleLocRdata(\ArrayIterator $iterator): Rdata\LOC
+    public static function handleLocRdata(\ArrayIterator $iterator)
     {
         $lat = self::dmsToDecimal((int) self::pop($iterator), (int) self::pop($iterator), (float) self::pop($iterator), self::pop($iterator));
         $lon = self::dmsToDecimal((int) self::pop($iterator), (int) self::pop($iterator), (float) self::pop($iterator), self::pop($iterator));
@@ -79,7 +79,7 @@ class RdataHandlers
      *
      * @throws ParseException
      */
-    public static function handleAplRdata(\ArrayIterator $iterator): Rdata\APL
+    public static function handleAplRdata(\ArrayIterator $iterator)
     {
         $rdata = new Rdata\APL();
 
@@ -102,7 +102,7 @@ class RdataHandlers
      *
      * @return Rdata\TXT
      */
-    public static function handleTxtRdata(\ArrayIterator $iterator): Rdata\TXT
+    public static function handleTxtRdata(\ArrayIterator $iterator)
     {
         $string = new StringIterator(implode(Tokens::SPACE, self::getAllRemaining($iterator)));
         $txt = new StringIterator();
@@ -119,7 +119,7 @@ class RdataHandlers
      * @param \ArrayIterator $iterator
      * @return Rdata\CAA
      */
-    public static function handleCaaRdata(\ArrayIterator $iterator): Rdata\CAA
+    public static function handleCaaRdata(\ArrayIterator $iterator)
     {
         $flag = (int) self::pop($iterator);
         $tag = (string) self::pop($iterator);
@@ -138,7 +138,7 @@ class RdataHandlers
      * @param \ArrayIterator $iterator
      * @return Rdata\RdataInterface
      */
-    public static function catchAll(string $type, \ArrayIterator $iterator): Rdata\RdataInterface
+    public static function catchAll($type, \ArrayIterator $iterator)
     {
         if (!Rdata\Factory::isTypeImplemented($type)) {
             return new Rdata\PolymorphicRdata($type, implode(Tokens::SPACE, self::getAllRemaining($iterator)));
@@ -151,7 +151,7 @@ class RdataHandlers
      * @param StringIterator $string
      * @param StringIterator $txt
      */
-    private static function handleTxt(StringIterator $string, StringIterator $txt): void
+    private static function handleTxt(StringIterator $string, StringIterator $txt)
     {
         if ($string->isNot(Tokens::DOUBLE_QUOTES)) {
             return;
@@ -176,7 +176,7 @@ class RdataHandlers
      *
      * @return string
      */
-    private static function pop(\ArrayIterator $iterator): string
+    private static function pop(\ArrayIterator $iterator)
     {
         $current = $iterator->current();
         $iterator->next();

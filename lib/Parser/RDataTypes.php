@@ -105,7 +105,7 @@ class RDataTypes
      *
      * @return bool
      */
-    public static function isValid(string $type): bool
+    public static function isValid($type)
     {
         return false !== array_search($type, self::$names);
     }

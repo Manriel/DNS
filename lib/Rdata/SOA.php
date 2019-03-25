@@ -80,7 +80,7 @@ class SOA implements RdataInterface
     /**
      * @param int $expire
      */
-    public function setExpire(int $expire): void
+    public function setExpire($expire)
     {
         $this->expire = $expire;
     }
@@ -88,7 +88,7 @@ class SOA implements RdataInterface
     /**
      * @return int
      */
-    public function getExpire(): ?int
+    public function getExpire()
     {
         return $this->expire;
     }
@@ -96,7 +96,7 @@ class SOA implements RdataInterface
     /**
      * @param int $minimum
      */
-    public function setMinimum(int $minimum): void
+    public function setMinimum($minimum)
     {
         $this->minimum = $minimum;
     }
@@ -104,7 +104,7 @@ class SOA implements RdataInterface
     /**
      * @return int
      */
-    public function getMinimum(): ?int
+    public function getMinimum()
     {
         return $this->minimum;
     }
@@ -112,7 +112,7 @@ class SOA implements RdataInterface
     /**
      * @param string $mname
      */
-    public function setMname(string $mname): void
+    public function setMname($mname)
     {
         $this->mname = $mname;
     }
@@ -120,7 +120,7 @@ class SOA implements RdataInterface
     /**
      * @return string
      */
-    public function getMname(): ?string
+    public function getMname()
     {
         return $this->mname;
     }
@@ -128,7 +128,7 @@ class SOA implements RdataInterface
     /**
      * @param int $refresh
      */
-    public function setRefresh(int $refresh): void
+    public function setRefresh($refresh)
     {
         $this->refresh = $refresh;
     }
@@ -136,7 +136,7 @@ class SOA implements RdataInterface
     /**
      * @return int
      */
-    public function getRefresh(): ?int
+    public function getRefresh()
     {
         return $this->refresh;
     }
@@ -144,7 +144,7 @@ class SOA implements RdataInterface
     /**
      * @param int $retry
      */
-    public function setRetry(int $retry): void
+    public function setRetry($retry)
     {
         $this->retry = (int) $retry;
     }
@@ -152,7 +152,7 @@ class SOA implements RdataInterface
     /**
      * @return int
      */
-    public function getRetry(): ?int
+    public function getRetry()
     {
         return $this->retry;
     }
@@ -160,7 +160,7 @@ class SOA implements RdataInterface
     /**
      * @param $rname
      */
-    public function setRname(string $rname): void
+    public function setRname($rname)
     {
         $this->rname = $rname;
     }
@@ -168,7 +168,7 @@ class SOA implements RdataInterface
     /**
      * @return string
      */
-    public function getRname(): ?string
+    public function getRname()
     {
         return $this->rname;
     }
@@ -176,7 +176,7 @@ class SOA implements RdataInterface
     /**
      * @param int $serial
      */
-    public function setSerial(int $serial): void
+    public function setSerial($serial)
     {
         $this->serial = $serial;
     }
@@ -184,7 +184,7 @@ class SOA implements RdataInterface
     /**
      * @return int
      */
-    public function getSerial(): ?int
+    public function getSerial()
     {
         return $this->serial;
     }
@@ -192,7 +192,7 @@ class SOA implements RdataInterface
     /**
      * {@inheritdoc}
      */
-    public function output(): string
+    public function output()
     {
         return sprintf(
             '%s %s %s %s %s %s %s',

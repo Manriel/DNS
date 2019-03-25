@@ -16,7 +16,7 @@ trait RdataTrait
     /**
      * {@inheritdoc}
      */
-    public function getType(): string
+    public function getType()
     {
         /* @const TYPE */
         return static::TYPE;

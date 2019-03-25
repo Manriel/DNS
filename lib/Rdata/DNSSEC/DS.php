@@ -49,7 +49,7 @@ class DS implements RdataInterface
     /**
      * @return int
      */
-    public function getKeyTag(): int
+    public function getKeyTag()
     {
         return $this->keyTag;
     }
@@ -57,7 +57,7 @@ class DS implements RdataInterface
     /**
      * @param int $keyTag
      */
-    public function setKeyTag(int $keyTag): void
+    public function setKeyTag($keyTag)
     {
         $this->keyTag = $keyTag;
     }
@@ -65,7 +65,7 @@ class DS implements RdataInterface
     /**
      * @return int
      */
-    public function getAlgorithm(): int
+    public function getAlgorithm()
     {
         return $this->algorithm;
     }
@@ -73,7 +73,7 @@ class DS implements RdataInterface
     /**
      * @param int $algorithm
      */
-    public function setAlgorithm(int $algorithm): void
+    public function setAlgorithm($algorithm)
     {
         $this->algorithm = $algorithm;
     }
@@ -81,7 +81,7 @@ class DS implements RdataInterface
     /**
      * @return int
      */
-    public function getDigestType(): int
+    public function getDigestType()
     {
         return $this->digestType;
     }
@@ -89,7 +89,7 @@ class DS implements RdataInterface
     /**
      * @param int $digestType
      */
-    public function setDigestType(int $digestType): void
+    public function setDigestType($digestType)
     {
         $this->digestType = $digestType;
     }
@@ -97,7 +97,7 @@ class DS implements RdataInterface
     /**
      * @return string
      */
-    public function getDigest(): string
+    public function getDigest()
     {
         return $this->digest;
     }
@@ -105,7 +105,7 @@ class DS implements RdataInterface
     /**
      * @param string $digest
      */
-    public function setDigest(string $digest): void
+    public function setDigest($digest)
     {
         $this->digest = $digest;
     }
@@ -113,7 +113,7 @@ class DS implements RdataInterface
     /**
      * {@inheritdoc}
      */
-    public function output(): string
+    public function output()
     {
         return sprintf(
             '%s %s %s %s',

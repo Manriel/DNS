@@ -37,7 +37,7 @@ class Zone implements \Countable, \IteratorAggregate
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct(?string $name = null, ?int $defaultTtl = null, array $resourceRecords = [])
+    public function __construct($name = null, $defaultTtl = null, array $resourceRecords = [])
     {
         $this->name = $name;
         $this->defaultTtl = $defaultTtl;
@@ -49,7 +49,7 @@ class Zone implements \Countable, \IteratorAggregate
      *
      * @throws \InvalidArgumentException
      */
-    public function setName(string $name): void
+    public function setName($name)
     {
         if (!Validator::fullyQualifiedDomainName($name)) {
             throw new \InvalidArgumentException(sprintf('Zone "%s" is not a fully qualified domain name.', $name));
@@ -61,7 +61,7 @@ class Zone implements \Countable, \IteratorAggregate
     /**
      * @return string
      */
-    public function getName(): ?string
+    public function getName()
     {
         return $this->name;
     }
@@ -69,7 +69,7 @@ class Zone implements \Countable, \IteratorAggregate
     /**
      * @return int
      */
-    public function getDefaultTtl(): ?int
+    public function getDefaultTtl()
     {
         return $this->defaultTtl;
     }
@@ -77,7 +77,7 @@ class Zone implements \Countable, \IteratorAggregate
     /**
      * @param int $defaultTtl
      */
-    public function setDefaultTtl(?int $defaultTtl): void
+    public function setDefaultTtl($defaultTtl)
     {
         $this->defaultTtl = $defaultTtl;
     }
@@ -85,7 +85,7 @@ class Zone implements \Countable, \IteratorAggregate
     /**
      * @return ResourceRecord[]
      */
-    public function getResourceRecords(): array
+    public function getResourceRecords()
     {
         return $this->resourceRecords;
     }
@@ -103,7 +103,7 @@ class Zone implements \Countable, \IteratorAggregate
     /**
      * @param ResourceRecord ...$resourceRecords
      */
-    public function fromList(ResourceRecord ...$resourceRecords): void
+    public function fromList(ResourceRecord ...$resourceRecords)
     {
         $this->fromArray($resourceRecords);
     }
@@ -111,7 +111,7 @@ class Zone implements \Countable, \IteratorAggregate
     /**
      * @param ResourceRecord $resourceRecord
      */
-    public function addResourceRecord(ResourceRecord $resourceRecord): void
+    public function addResourceRecord(ResourceRecord $resourceRecord)
     {
         $this->resourceRecords[] = $resourceRecord;
     }
@@ -119,7 +119,7 @@ class Zone implements \Countable, \IteratorAggregate
     /**
      * @return \ArrayIterator
      */
-    public function getIterator(): \ArrayIterator
+    public function getIterator()
     {
         return new \ArrayIterator($this->resourceRecords);
     }
@@ -127,7 +127,7 @@ class Zone implements \Countable, \IteratorAggregate
     /**
      * @return int
      */
-    public function count(): int
+    public function count()
     {
         return \count($this->resourceRecords);
     }
@@ -135,7 +135,7 @@ class Zone implements \Countable, \IteratorAggregate
     /**
      * @return bool
      */
-    public function isEmpty(): bool
+    public function isEmpty()
     {
         return empty($this->resourceRecords);
     }
@@ -145,7 +145,7 @@ class Zone implements \Countable, \IteratorAggregate
      *
      * @return bool
      */
-    public function contains(ResourceRecord $resourceRecord): bool
+    public function contains(ResourceRecord $resourceRecord)
     {
         foreach ($this->resourceRecords as $_item) {
             if ($_item === $resourceRecord) {
@@ -161,7 +161,7 @@ class Zone implements \Countable, \IteratorAggregate
      *
      * @return bool
      */
-    public function remove(ResourceRecord $resourceRecord): bool
+    public function remove(ResourceRecord $resourceRecord)
     {
         foreach ($this->resourceRecords as $key => $_item) {
             if ($_item === $resourceRecord) {
@@ -179,7 +179,7 @@ class Zone implements \Countable, \IteratorAggregate
      *
      * @return string
      */
-    public function getClass(): string
+    public function getClass()
     {
         foreach ($this->resourceRecords as $resourceRecord) {
             if (null !== $resourceRecord->getClass()) {

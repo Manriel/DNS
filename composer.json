@@ -1,6 +1,6 @@
 {
-    "name": "badcow/dns",
-    "description": "A PHP library for creating DNS zone files based on RFC1035",
+    "name": "Manriel/dns",
+    "description": "A PHP library for creating DNS zone files based on RFC1035, the fork of badcow/dns",
     "authors": [
         {
             "name": "Sam Williams",
@@ -8,8 +8,7 @@
         }
     ],
     "require": {
-        "php": "~7.1",
-        "rlanvin/php-ip": "~1.0"
+        "php": "~5.6"
     },
     "require-dev": {
         "phpunit/phpunit": "~7.5",

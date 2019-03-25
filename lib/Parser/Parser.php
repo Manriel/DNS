@@ -58,7 +58,7 @@ class Parser
      *
      * @throws ParseException
      */
-    public static function parse(string $name, string $zone): Zone
+    public static function parse($name, $zone)
     {
         return (new self())->makeZone($name, $zone);
     }
@@ -71,7 +71,7 @@ class Parser
      *
      * @throws ParseException
      */
-    public function makeZone($name, $string): Zone
+    public function makeZone($name, $string)
     {
         $this->zone = new Zone($name);
         $this->string = Normaliser::normalise($string);
@@ -88,7 +88,7 @@ class Parser
      *
      * @throws ParseException
      */
-    private function processLine(string $line): void
+    private function processLine($line)
     {
         $iterator = new \ArrayIterator(explode(Tokens::SPACE, $line));
 
@@ -113,7 +113,7 @@ class Parser
      *
      * @param \ArrayIterator $iterator
      */
-    private function processControlEntry(\ArrayIterator $iterator): void
+    private function processControlEntry(\ArrayIterator $iterator)
     {
         if ('$TTL' === strtoupper($iterator->current())) {
             $iterator->next();
@@ -127,7 +127,7 @@ class Parser
      * @param \ArrayIterator $iterator
      * @param ResourceRecord $resourceRecord
      */
-    private function processResourceName(\ArrayIterator $iterator, ResourceRecord $resourceRecord): void
+    private function processResourceName(\ArrayIterator $iterator, ResourceRecord $resourceRecord)
     {
         if ($this->isResourceName($iterator)) {
             $this->previousName = $iterator->current();
@@ -143,7 +143,7 @@ class Parser
      * @param \ArrayIterator $iterator
      * @param ResourceRecord $resourceRecord
      */
-    private function processTtl(\ArrayIterator $iterator, ResourceRecord $resourceRecord): void
+    private function processTtl(\ArrayIterator $iterator, ResourceRecord $resourceRecord)
     {
         if ($this->isTTL($iterator)) {
             $resourceRecord->setTtl($iterator->current());
@@ -157,7 +157,7 @@ class Parser
      * @param \ArrayIterator $iterator
      * @param ResourceRecord $resourceRecord
      */
-    private function processClass(\ArrayIterator $iterator, ResourceRecord $resourceRecord): void
+    private function processClass(\ArrayIterator $iterator, ResourceRecord $resourceRecord)
     {
         if (Classes::isValid(strtoupper($iterator->current()))) {
             $resourceRecord->setClass(strtoupper($iterator->current()));
@@ -172,7 +172,7 @@ class Parser
      *
      * @return bool
      */
-    private function isResourceName(\ArrayIterator $iterator): bool
+    private function isResourceName(\ArrayIterator $iterator)
     {
         return !(
             $this->isTTL($iterator) ||
@@ -188,7 +188,7 @@ class Parser
      *
      * @return bool
      */
-    private function isControlEntry(\ArrayIterator $iterator): bool
+    private function isControlEntry(\ArrayIterator $iterator)
     {
         return 1 === preg_match('/^\$[A-Z0-9]+/i', $iterator->current());
     }
@@ -200,7 +200,7 @@ class Parser
      *
      * @return bool
      */
-    private function isTTL(\ArrayIterator $iterator): bool
+    private function isTTL(\ArrayIterator $iterator)
     {
         return 1 === preg_match('/^\d+$/', $iterator->current());
     }
@@ -212,7 +212,7 @@ class Parser
      *
      * @throws ParseException
      */
-    private function extractRdata(\ArrayIterator $iterator): Rdata\RdataInterface
+    private function extractRdata(\ArrayIterator $iterator)
     {
         $type = strtoupper($iterator->current());
         $iterator->next();

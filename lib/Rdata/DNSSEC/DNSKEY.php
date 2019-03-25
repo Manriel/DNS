@@ -63,7 +63,7 @@ class DNSKEY implements RdataInterface
     /**
      * @return int
      */
-    public function getFlags(): int
+    public function getFlags()
     {
         return $this->flags;
     }
@@ -71,7 +71,7 @@ class DNSKEY implements RdataInterface
     /**
      * @param int $flags
      */
-    public function setFlags(int $flags): void
+    public function setFlags(int $flags)
     {
         $this->flags = $flags;
     }
@@ -79,7 +79,7 @@ class DNSKEY implements RdataInterface
     /**
      * @return int
      */
-    public function getProtocol(): int
+    public function getProtocol()
     {
         return $this->protocol;
     }
@@ -87,7 +87,7 @@ class DNSKEY implements RdataInterface
     /**
      * @return int
      */
-    public function getAlgorithm(): int
+    public function getAlgorithm()
     {
         return $this->algorithm;
     }
@@ -95,7 +95,7 @@ class DNSKEY implements RdataInterface
     /**
      * @param int $algorithm
      */
-    public function setAlgorithm(int $algorithm): void
+    public function setAlgorithm($algorithm)
     {
         $this->algorithm = $algorithm;
     }
@@ -103,7 +103,7 @@ class DNSKEY implements RdataInterface
     /**
      * @return string
      */
-    public function getPublicKey(): string
+    public function getPublicKey()
     {
         return $this->publicKey;
     }
@@ -111,7 +111,7 @@ class DNSKEY implements RdataInterface
     /**
      * @param string $publicKey
      */
-    public function setPublicKey(string $publicKey): void
+    public function setPublicKey($publicKey)
     {
         $this->publicKey = $publicKey;
     }
@@ -119,7 +119,7 @@ class DNSKEY implements RdataInterface
     /**
      * {@inheritdoc}
      */
-    public function output(): string
+    public function output()
     {
         return sprintf(
             '%s %s %s %s',

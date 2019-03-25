@@ -66,7 +66,7 @@ class LOC implements RdataInterface
     /**
      * @param float $latitude
      */
-    public function setLatitude(float $latitude): void
+    public function setLatitude($latitude)
     {
         $this->latitude = (float) $latitude;
     }
@@ -76,7 +76,7 @@ class LOC implements RdataInterface
      *
      * @return float|string|null
      */
-    public function getLatitude(string $format = self::FORMAT_DECIMAL)
+    public function getLatitude($format = self::FORMAT_DECIMAL)
     {
         if (self::FORMAT_DMS === $format) {
             return $this->toDms($this->latitude, self::LATITUDE);
@@ -88,7 +88,7 @@ class LOC implements RdataInterface
     /**
      * @param float $longitude
      */
-    public function setLongitude(float $longitude): void
+    public function setLongitude($longitude)
     {
         $this->longitude = (float) $longitude;
     }
@@ -98,7 +98,7 @@ class LOC implements RdataInterface
      *
      * @return float|string|null
      */
-    public function getLongitude(string $format = self::FORMAT_DECIMAL)
+    public function getLongitude($format = self::FORMAT_DECIMAL)
     {
         if (self::FORMAT_DMS === $format) {
             return $this->toDms($this->longitude, self::LONGITUDE);
@@ -112,7 +112,7 @@ class LOC implements RdataInterface
      *
      * @throws \OutOfRangeException
      */
-    public function setAltitude(float $altitude): void
+    public function setAltitude($altitude)
     {
         if ($altitude < -100000.00 || $altitude > 42849672.95) {
             throw new \OutOfRangeException('The altitude must be on [-100000.00, 42849672.95].');
@@ -124,7 +124,7 @@ class LOC implements RdataInterface
     /**
      * @return float
      */
-    public function getAltitude(): float
+    public function getAltitude()
     {
         return $this->altitude;
     }
@@ -134,7 +134,7 @@ class LOC implements RdataInterface
      *
      * @throws \OutOfRangeException
      */
-    public function setHorizontalPrecision(float $horizontalPrecision): void
+    public function setHorizontalPrecision($horizontalPrecision)
     {
         if ($horizontalPrecision < 0 || $horizontalPrecision > 90000000.0) {
             throw new \OutOfRangeException('The horizontal precision must be on [0, 90000000.0].');
@@ -146,7 +146,7 @@ class LOC implements RdataInterface
     /**
      * @return float
      */
-    public function getHorizontalPrecision(): float
+    public function getHorizontalPrecision()
     {
         return $this->horizontalPrecision;
     }
@@ -156,7 +156,7 @@ class LOC implements RdataInterface
      *
      * @throws \OutOfRangeException
      */
-    public function setSize(float $size): void
+    public function setSize($size)
     {
         if ($size < 0 || $size > 90000000.0) {
             throw new \OutOfRangeException('The size must be on [0, 90000000.0].');
@@ -168,7 +168,7 @@ class LOC implements RdataInterface
     /**
      * @return float
      */
-    public function getSize(): float
+    public function getSize()
     {
         return $this->size;
     }
@@ -178,7 +178,7 @@ class LOC implements RdataInterface
      *
      * @throws \OutOfRangeException
      */
-    public function setVerticalPrecision(float $verticalPrecision): void
+    public function setVerticalPrecision($verticalPrecision)
     {
         if ($verticalPrecision < 0 || $verticalPrecision > 90000000.0) {
             throw new \OutOfRangeException('The vertical precision must be on [0, 90000000.0].');
@@ -190,7 +190,7 @@ class LOC implements RdataInterface
     /**
      * @return float
      */
-    public function getVerticalPrecision(): float
+    public function getVerticalPrecision()
     {
         return $this->verticalPrecision;
     }
@@ -198,7 +198,7 @@ class LOC implements RdataInterface
     /**
      * {@inheritdoc}
      */
-    public function output(): string
+    public function output()
     {
         return sprintf(
                 '%s %s %.2fm %.2fm %.2fm %.2fm',
@@ -219,7 +219,7 @@ class LOC implements RdataInterface
      *
      * @return string
      */
-    private function toDms(float $decimal, string $axis = self::LATITUDE): string
+    private function toDms($decimal, $axis = self::LATITUDE)
     {
         $d = (int) floor(abs($decimal));
         $m = (int) floor((abs($decimal) - $d) * 60);
