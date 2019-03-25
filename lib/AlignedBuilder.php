@@ -160,6 +160,10 @@ class AlignedBuilder
             return self::outputLoc($rdata, $padding);
         }
 
+        if ($rdata instanceof TXT) {
+            return self::outputTxt($rdata, $padding);
+        }
+
         return $rdata->output();
     }
 
@@ -240,6 +244,28 @@ class AlignedBuilder
             self::makeLine(sprintf('%.2fm', $rdata->getHorizontalPrecision()), 'HORIZONTAL PRECISION', $longestVarLength, $padding).
             self::makeLine(sprintf('%.2fm', $rdata->getVerticalPrecision()), 'VERTICAL PRECISION', $longestVarLength, $padding).
             str_repeat(' ', $padding).self::MULTILINE_END;
+    }
+    
+    private static function outputTxt(TXT $rdata, $padding)
+    {
+        $text = trim($rdata->getText());
+    
+        if (strlen($text) > 110) {
+            $parts = str_split(str_replace(["\r", "\n"], '', $text), 100);
+            
+            $result = self::MULTILINE_BEGIN.PHP_EOL;
+            foreach ($parts as $line) {
+                $result .= self::makeLine(addslashes($line), '', 110, $padding);
+            }
+            $result .= str_repeat(' ', $padding).self::MULTILINE_END;
+
+            return $result;
+            
+        }
+    
+        return '"' . addslashes($text) . '"';
+        
+        
     }
 
     /**
