@@ -105,10 +105,10 @@ class ZoneTest extends TestCase
         $zone->addResourceRecord($mx1);
 
         $apl = new \Badcow\DNS\Rdata\APL();
-        $apl->addAddressRange(\IPBlock::create('192.168.0.0/23'));
-        $apl->addAddressRange(\IPBlock::create('192.168.1.64/28'), false);
-        $apl->addAddressRange(\IPBlock::create('2001:acad:1::/112'), true);
-        $apl->addAddressRange(\IPBlock::create('2001:acad:1::8/128'), false);
+        $apl->addAddressRange(['version' => 4, 'first_ip' => '192.168.0.0', 'prefix' => 23]);
+        $apl->addAddressRange(['version' => 4, 'first_ip' => '192.168.1.64', 'prefix' => 28], false);
+        $apl->addAddressRange(['version' => 6, 'first_ip' => '2001:acad:1::', 'prefix' => 112], true);
+        $apl->addAddressRange(['version' => 6, 'first_ip' => '2001:acad:1::8', 'prefix' => 128], false);
 
         $multicast = new ResourceRecord('multicast', $apl);
 

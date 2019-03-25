@@ -43,7 +43,7 @@ class ToolboxTest extends \PHPUnit\Framework\TestCase
      *
      * @dataProvider provider_expandIPv6
      */
-    public function testExpandIpv6(string $expectation, string $ip)
+    public function testExpandIpv6($expectation, $ip)
     {
         $this->assertEquals($expectation, Toolbox::expandIpv6($ip));
     }
@@ -54,7 +54,7 @@ class ToolboxTest extends \PHPUnit\Framework\TestCase
      *
      * @dataProvider provider_contractIPv6
      */
-    public function testContractIpv6(string $ip, string $expectation)
+    public function testContractIpv6($ip, $expectation)
     {
         $this->assertEquals($expectation, Toolbox::contractIpv6($ip));
     }

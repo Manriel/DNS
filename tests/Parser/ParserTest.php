@@ -29,7 +29,7 @@ class ParserTest extends TestCase
      *
      * @return Zone
      */
-    private function getTestZone(): Zone
+    private function getTestZone()
     {
         $zone = new Zone('example.com.');
         $zone->setDefaultTtl(3600);
@@ -252,7 +252,7 @@ TXT;
      *
      * @return array
      */
-    private function findRecord(string $name, Zone $zone): array
+    private function findRecord($name, Zone $zone)
     {
         $records = [];
 

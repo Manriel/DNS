@@ -31,7 +31,7 @@ class APL implements RdataInterface
     private $excludedAddressRanges = [];
 
     /**
-     * @param \IPBlock $ipBlock
+     * @param array    $ipBlock
      * @param bool     $included True if the resource exists within the range, False if the resource
      *                           is not within the range. I.E. the negation.
      */
